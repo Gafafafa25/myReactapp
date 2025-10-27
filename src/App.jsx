@@ -7,11 +7,17 @@ import './myStyles.css'
 
 import MyButton from './components/MyButton.jsx'
 import MyApp from './components/MyApp.jsx'
+import MyList from './components/MyList.jsx'
+import MyButton2 from "./components/MyButton2.jsx";
+
 
 function App() {
     const [count, setCount] = useState(0)
     const [count2, setCount2] = useState(0)
-
+    const params = {
+        width: 50,
+        height: 30
+    }
     return (
 
         <>
@@ -19,18 +25,25 @@ function App() {
             <MyButton />
             <MyButton />
             <MyApp />
+            <MyList />
+            <MyButton2 />
             <div>
                 <a href="https://vite.dev" target="_blank">
                     <img src={viteLogo} className="logo" alt="Vite logo"/>
                 </a>
                 <a href="https://react.dev" target="_blank">
-                    <img src={myIcon} className="myIcon" alt="myIcon"/>
+                    <img src={myIcon} className="myIcon" style={{
+                        width: params.width,
+                        height: params.height
+                    }} alt="myIcon" />
+                    <img src="src/assets/icon.svg" className="myIcon" alt="myIcon"/>
                 </a>
                 <a href="https://react.dev" target="_blank">
                     <img src={reactLogo} className="logo react" alt="React logo"/>
                 </a>
+
             </div>
-            <h1>Vite + React</h1>
+            <h1 className="text-blue-600">Vite + React</h1>
             <div className="card">
                 <button onClick={() => setCount(count => {
                     return count + 1
