@@ -9,24 +9,46 @@ import MyButton from './components/MyButton.jsx'
 import MyApp from './components/MyApp.jsx'
 import MyList from './components/MyList.jsx'
 import MyButton2 from "./components/MyButton2.jsx";
-
+import MySquare from './components/MySquare.jsx'
+import AdminPanel  from "./components/AdminPanel.jsx";
+import LoginForm from './components/LoginForm.jsx'
 
 function App() {
     const [count, setCount] = useState(0)
     const [count2, setCount2] = useState(0)
+    const [isLoggedIn, setIsLoggedIn] = useState(true)
+    let content;
+    if (isLoggedIn) {
+        content = <AdminPanel />
+    }
+    else {
+        content = <LoginForm />
+    }
+
     const params = {
         width: 50,
         height: 30
     }
+    // setIsLoggedIn(false)
+    console.log(new Date())
     return (
 
         <>
-            <MyButton />
-            <MyButton />
-            <MyButton />
-            <MyApp />
-            <MyList />
-            <MyButton2 />
+            <button onClick={() => {
+                setIsLoggedIn(!isLoggedIn)
+            }} >toggle</button>
+            <div>
+                {content}
+            </div>
+            <MyButton/>
+            <MyButton/>
+            <MyButton/>
+            <MyApp/>
+            <MyList/>
+            <MyButton2/>
+
+            <MySquare/>
+
             <div>
                 <a href="https://vite.dev" target="_blank">
                     <img src={viteLogo} className="logo" alt="Vite logo"/>
@@ -35,7 +57,7 @@ function App() {
                     <img src={myIcon} className="myIcon" style={{
                         width: params.width,
                         height: params.height
-                    }} alt="myIcon" />
+                    }} alt="myIcon"/>
                     <img src="src/assets/icon.svg" className="myIcon" alt="myIcon"/>
                 </a>
                 <a href="https://react.dev" target="_blank">
