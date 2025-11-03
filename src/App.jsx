@@ -12,18 +12,14 @@ import MyButton2 from "./components/MyButton2.jsx";
 import MySquare from './components/MySquare.jsx'
 import AdminPanel  from "./components/AdminPanel.jsx";
 import LoginForm from './components/LoginForm.jsx'
+import AdBlock from './components/AdBlock.jsx'
 
 function App() {
     const [count, setCount] = useState(0)
     const [count2, setCount2] = useState(0)
     const [isLoggedIn, setIsLoggedIn] = useState(true)
-    let content;
-    if (isLoggedIn) {
-        content = <AdminPanel />
-    }
-    else {
-        content = <LoginForm />
-    }
+    const [isAdOn, setIsAdOn] = useState(false)
+    const [hasLiked, setHasLiked] = useState(false)
 
     const params = {
         width: 50,
@@ -34,11 +30,26 @@ function App() {
     return (
 
         <>
+            <button onClick={()=> setHasLiked(!hasLiked)}>
+                {hasLiked ? "👍" : "👎"}
+            </button>
+            <button onClick={()=> {
+                setIsAdOn(!isAdOn)
+            }}>Ad on/off</button>
             <button onClick={() => {
                 setIsLoggedIn(!isLoggedIn)
-            }} >toggle</button>
+            }}>toggle
+            </button>
             <div>
-                {content}
+                {isLoggedIn ? (
+                    <AdminPanel/>
+                ) : (
+                    <LoginForm/>
+                )}
+            </div>
+
+            <div>
+                {isAdOn && <AdBlock/>}
             </div>
             <MyButton/>
             <MyButton/>
