@@ -13,6 +13,7 @@ import MySquare from './components/MySquare.jsx'
 import AdminPanel  from "./components/AdminPanel.jsx";
 import LoginForm from './components/LoginForm.jsx'
 import AdBlock from './components/AdBlock.jsx'
+import MyTable from './components/MyTable/MyTable.jsx'
 
 function App() {
     const [count, setCount] = useState(0)
@@ -51,6 +52,8 @@ function App() {
             <div>
                 {isAdOn && <AdBlock/>}
             </div>
+
+            <MyTable/>
             <MyButton/>
             <MyButton/>
             <MyButton/>
